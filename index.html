@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>Cat Adventure Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-cubes" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="brand">
+      <div class="school-logo-wrap"><img class="school-logo" src="smkn1-sanden-logo.jpeg" alt="Logo SMKN 1 Sanden Bantul" onerror="this.style.display='none'"></div>
+      <div class="cat-logo" aria-hidden="true">🐱</div>
+      <div><strong>CAT ADVENTURE</strong><span>FUTURISTIC CALCULATOR</span></div>
+      <div class="group-info"><strong>KELOMPOK 1</strong><span>Rosi • Dhisya • Silvy • Arum</span></div>
+    </div>
+    <div class="header-actions">
+      <button id="themeBtn" title="Ganti tema" aria-label="Ganti tema">🌙</button>
+      <button id="soundBtn" title="Suara" aria-label="Suara">🔇</button>
+      <button id="settingsBtn" title="Pengaturan" aria-label="Pengaturan">⚙️</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="adventure glass">
+      <div class="cat-mascot"><div class="cat-ear left"></div><div class="cat-ear right"></div><div class="cat-head"><span class="eye">●</span><span class="eye">●</span><span class="nose">◆</span><span class="whisker w1"></span><span class="whisker w2"></span></div><div class="cat-body">🐾</div></div>
+      <h2>🐾 Cat Adventure</h2>
+      <p id="catMessage">Meow! Calculation ready!</p>
+      <div class="level-card"><small>CAT LEVEL</small><b id="levelName">Kitten Rookie</b><strong id="levelNum">LEVEL 01</strong><div class="xpbar"><i id="xpFill"></i></div><small id="xpText">0 / 100 XP</small></div>
+      <button class="wide-btn" id="historyBtn">📜 Adventure History</button>
+      <div class="achievement-mini"><span>🏆</span><div><b>Achievements</b><small id="achievementCount">0 unlocked</small></div></div>
+    </aside>
+
+    <section class="calculator glass">
+      <div class="calc-head"><div><span class="eyebrow">CAT CORE</span><h1>Calculator</h1></div>
+        <select id="modeSelect" aria-label="Mode kalkulator"><option value="basic">BASIC</option><option value="scientific">SCIENTIFIC</option><option value="programmer">PROGRAMMER</option><option value="converter">CONVERTER</option></select>
+      </div>
+      <div class="display"><div id="expression" class="expression">0</div><div id="result" class="result">0</div></div>
+      <div class="memory-row"><button data-action="mc">MC</button><button data-action="mr">MR</button><button data-action="mplus">M+</button><button data-action="mminus">M-</button><button data-action="ms">MS</button><span id="memoryIndicator">MEMORY: 0</span></div>
+      <div id="scientific" class="extra-panel hidden">
+        <button data-fn="sqrt">√</button><button data-fn="square">x²</button><button data-fn="inverse">1/x</button><button data-fn="power">xʸ</button>
+        <button data-fn="sin">sin</button><button data-fn="cos">cos</button><button data-fn="tan">tan</button><button data-fn="asin">asin</button><button data-fn="acos">acos</button><button data-fn="atan">atan</button>
+        <button data-fn="log">log</button><button data-fn="ln">ln</button><button data-fn="exp">eˣ</button><button data-fn="pow10">10ˣ</button><button data-fn="factorial">n!</button><button data-fn="abs">|x|</button>
+        <button data-const="pi">π</button><button data-const="e">e</button><button data-const="phi">φ</button><button data-fn="random">RAND</button>
+      </div>
+      <div id="programmer" class="extra-panel hidden"><button data-prog="and">AND 1</button><button data-prog="or">OR 1</button><button data-prog="xor">XOR 1</button><button data-prog="not">NOT</button><button data-prog="shl">SHIFT LEFT</button><button data-prog="shr">SHIFT RIGHT</button><div class="base-readout">BIN <b id="binOut">0</b> · HEX <b id="hexOut">0</b> · OCT <b id="octOut">0</b></div></div>
+      <div id="converter" class="converter hidden"><div class="convert-row"><select id="convertType"><option value="length">Panjang</option><option value="weight">Berat</option><option value="temperature">Suhu</option><option value="area">Luas</option><option value="volume">Volume</option><option value="time">Waktu</option><option value="speed">Kecepatan</option><option value="data">Data Digital</option><option value="energy">Energi</option></select><input id="convertInput" type="number" value="1" step="any"><select id="convertFrom"></select><span>→</span><select id="convertTo"></select></div><div class="convert-result" id="convertResult">1</div></div>
+      <div class="keypad">
+        <button class="danger" data-action="clear">AC</button><button data-action="backspace">⌫</button><button data-action="percent">%</button><button class="operator" data-value="/">÷</button>
+        <button data-value="7">7</button><button data-value="8">8</button><button data-value="9">9</button><button class="operator" data-value="*">×</button>
+        <button data-value="4">4</button><button data-value="5">5</button><button data-value="6">6</button><button class="operator" data-value="-">−</button>
+        <button data-value="1">1</button><button data-value="2">2</button><button data-value="3">3</button><button class="operator" data-value="+">+</button>
+        <button data-action="sign">±</button><button class="zero" data-value="0">0</button><button data-value=".">.</button><button class="equal" data-action="equals">=</button>
+      </div>
+      <div class="keyboard-ready">⌨ Keyboard Ready</div>
+    </section>
+  </main>
+
+  <div id="historyModal" class="modal hidden"><div class="modal-card glass"><button class="close" data-close="historyModal">×</button><h2>📜 Adventure History</h2><div id="historyList"></div><button class="wide-btn danger-btn" id="clearHistory">Hapus Semua History</button></div></div>
+  <div id="settingsModal" class="modal hidden"><div class="modal-card glass"><button class="close" data-close="settingsModal">×</button><h2>⚙️ Settings</h2><label>Theme <select id="themeSelect"><option value="dark">Dark</option><option value="light">Light</option></select></label><label>Sound <input id="soundToggle" type="checkbox"></label><label>Animation <input id="animationToggle" type="checkbox" checked></label><label>Decimal Places <select id="decimalSelect"><option value="auto">Auto</option><option>2</option><option>4</option><option>6</option><option>8</option></select></label><button class="wide-btn danger-btn" id="resetData">RESET DATA</button></div></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
